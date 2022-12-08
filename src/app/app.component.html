@@ -3,10 +3,24 @@
     <div class="col-3">
       <h3 class="bg-primary text-white p3">Yapacaklrımın Listesi</h3>
       <div class="input-group">
-        <input type="text" class="form-control" />
+        <input type="text" #toDoText class="form-control" />
         <div class="input-group-append">
-          <button class="btn btn-primary">Kaydet</button>
+          <button
+            class="btn btn-primary"
+            (click)="addItem(toDoText.value); toDoText.value = ''"
+          >
+            Kaydet
+          </button>
         </div>
+      </div>
+      <div class="custom-control custom-checkbox my-3">
+        <input
+          type="checkbox"
+          [(ngModel)]="isDisplay"
+          id="displayAll"
+          class="custom-control-input"
+        />
+        <label for="displayAll" class="custom-control-label">Display All</label>
       </div>
       <table class="table table-striped table-bordered">
         <thead>

@@ -1,5 +1,5 @@
 export class Model {
-  user;
+  user:string;
   items;
   constructor() {
     this.user = "ibrahim";

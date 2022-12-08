@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Model } from './model';
+import { Model, TodoItem } from './model';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +9,25 @@ import { Model } from './model';
 export class AppComponent {
   title = 'Eğitim için oluşturulmuş bir angular projsidir. Başarılar';
   name= 'İbrahim';
+  isDisplay=false;
   model = new Model();
   getName(){
     return this.model.user;
   }
   getItem(){
-    return this.model.items.filter(item=>!item.action);
+    if(this.isDisplay){
+      return this.model.items;
+    }
+    else{
+      return this.model.items.filter(item=>!item.action);
+    }
+
   }
+  addItem(value:string){
+    if(value!=""){
+      this.model.items.push(new TodoItem(value, false));
+    }
+
+  }
+
 }
